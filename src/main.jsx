@@ -168,7 +168,96 @@ function App() {
       alert(err.message);
     }
   }
+  async function removeFabric(fabric) {
+    const name =
+      fabric.fabricName ||
+      fabric.fabricId ||
+      "this fabric";
 
+    if (!confirm(`Delete ${name}?`)) return;
+
+    try {
+      await deleteDoc(doc(db, "fabrics", fabric.id));
+    } catch (err) {
+      alert(err.message);
+    }
+  }
+
+  // PASTE exportCSV FUNCTION HERE
+  function exportCSV() {
+    if (fabrics.length === 0) {
+      alert("No fabric data available to export.");
+      return;
+    }
+
+    const headers = [
+      "Fabric ID",
+      "Fabric Name",
+      "Composition",
+      "Construction",
+      "Weave",
+      "GSM",
+      "Oz",
+      "Width",
+      "Finish",
+      "Color",
+      "Supplier / Mill",
+      "Price",
+      "Currency",
+      "MOQ",
+      "Lead Time",
+      "Remarks"
+    ];
+
+    const escapeCSV = (value) => {
+      const text = String(value ?? "");
+      return `"${text.replace(/"/g, '""')}"`;
+    };
+
+    const rows = fabrics.map((fabric) => [
+      fabric.fabricId,
+      fabric.fabricName,
+      fabric.composition,
+      fabric.construction,
+      fabric.weave,
+      fabric.gsm,
+      fabric.oz,
+      fabric.width,
+      fabric.finish,
+      fabric.color,
+      fabric.supplier,
+      fabric.price,
+      fabric.currency,
+      fabric.moq,
+      fabric.leadTime,
+      fabric.remarks
+    ]);
+
+    const csvContent = [
+      headers.map(escapeCSV).join(","),
+      ...rows.map((row) => row.map(escapeCSV).join(","))
+    ].join("\n");
+
+    const blob = new Blob(
+      ["\uFEFF" + csvContent],
+      { type: "text/csv;charset=utf-8;" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    const today = new Date().toISOString().slice(0, 10);
+
+    link.href = url;
+    link.download = `SDG-Fabric-Library-Backup-${today}.csv`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+  }
+
+  if (loading) {
   if (loading) {
     return (
       <div className="center">
