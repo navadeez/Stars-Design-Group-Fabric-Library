@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyB-WN1is2qgA6dQN4-oMLUPCB6eLFwuo3E",
   authDomain: "stars-fabric-library-e2d2c.firebaseapp.com",
   projectId: "stars-fabric-library-e2d2c",
   storageBucket: "stars-fabric-library-e2d2c.firebasestorage.app",
