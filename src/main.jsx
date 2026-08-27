@@ -26,7 +26,8 @@ import {
   Trash2,
   X,
   Package,
-  LoaderCircle
+    LoaderCircle,
+  Download
 } from "lucide-react";
 import { auth, db } from "./firebase";
 import "./styles.css";
