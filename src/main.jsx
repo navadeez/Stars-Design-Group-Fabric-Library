@@ -192,11 +192,16 @@ function App() {
           </div>
         </div>
 
-        <div className="headerActions">
-          <button className="primary" onClick={openAdd}>
-            <Plus size={18} />
-            Add Fabric
-          </button>
+       <div className="headerActions">
+  <button className="secondary" onClick={exportCSV}>
+    <Download size={18} />
+    Export CSV
+  </button>
+
+  <button className="primary" onClick={openAdd}>
+    <Plus size={18} />
+    Add Fabric
+  </button>
 
           <button
             className="iconBtn"
