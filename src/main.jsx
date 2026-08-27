@@ -258,7 +258,6 @@ function App() {
   }
 
   if (loading) {
-  if (loading) {
     return (
       <div className="center">
         <LoaderCircle className="spin" />
