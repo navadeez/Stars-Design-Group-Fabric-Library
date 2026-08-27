@@ -1,21 +1,17 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Replace these values with your Firebase project configuration.
-// Firebase Console > Project settings > Your apps > Web app
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_AUTH_DOMAIN",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_STORAGE_BUCKET",
-  messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID"
+  apiKey: "AIzaSyB-WN1is2qgA6dQN4-oMLUPCB6eLFwuo3E",
+  authDomain: "stars-fabric-library-e2d2c.firebaseapp.com",
+  projectId: "stars-fabric-library-e2d2c",
+  storageBucket: "stars-fabric-library-e2d2c.firebasestorage.app",
+  messagingSenderId: "570705618004",
+  appId: "1:570705618004:web:ed5b202ab3eefd669379c1"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
